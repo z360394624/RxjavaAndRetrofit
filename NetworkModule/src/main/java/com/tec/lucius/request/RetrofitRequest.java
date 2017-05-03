@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import io.reactivex.Flowable;
+import io.reactivex.FlowableSubscriber;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
@@ -108,7 +109,7 @@ public class RetrofitRequest {
         return Schedulers.io();
     }
 
-    public void execute(String path, HashMap<String, Object> params, ResponseSubscriber subscriber) {
+    public void execute(String path, HashMap<String, Object> params, FlowableSubscriber subscriber) {
         ApiService service = getRetrofit().create(ApiService.class);
         service.post(path, params).compose(getTransformer()).subscribe(subscriber);
     }

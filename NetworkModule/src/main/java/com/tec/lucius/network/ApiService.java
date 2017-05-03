@@ -1,6 +1,7 @@
 package com.tec.lucius.network;
 
 import com.tec.lucius.response.Context;
+import com.tec.lucius.response.ResponseBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,10 +22,10 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("{path}")
-    Flowable<Response<Context>> post(@Path(value = "path", encoded = true) String path, @FieldMap HashMap<String, Object> params);
+    Flowable<Response<ResponseBean<Context>>> post(@Path(value = "path", encoded = true) String path, @FieldMap HashMap<String, Object> params);
 
     @FormUrlEncoded
     @GET("{path}")
-    Flowable<Response<Context>> get(@Path(value = "path", encoded = true) String path, @QueryMap HashMap<String, Object> queryMap);
+    Flowable<Response<ResponseBean<Context>>> get(@Path(value = "path", encoded = true) String path, @QueryMap HashMap<String, Object> queryMap);
 
 }
